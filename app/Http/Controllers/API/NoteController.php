@@ -21,17 +21,11 @@ class NoteController extends Controller
         ]);
     }
 
-    
-    public function create()
-    {
-        //
-    }
-
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required',
-            'note' => 'required'
+            'note' => 'required|min:6'
         ]);
 
         if ($validator->fails()) {
@@ -64,7 +58,7 @@ class NoteController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title'=>'required',
-            'note' => 'required',
+            'note' => 'required|min:6',
         ]);
 
         if ($validator->fails()) {
